@@ -16,5 +16,4 @@ jobs:
           lsblk
           free
           swapon
-          lsmod
-          mount
+          df -h

@@ -15,10 +15,6 @@ jobs:
         run: |
           lsblk
           free
-          sudo apt-get install linux-image-extra-virtual
-          sudo modprobe zram
-          echo 8G | sudo tee /sys/block/zram0/disksize
-          echo zstd | sudo tee /sys/block/zram0/comp_algorithm
-          sudo mkswap /dev/zram0
-          sudo swapon --priority 100 /dev/zram0
+          sudo apt install zram-tools
+          sudo systemctl restart zramswap
           free

@@ -1,0 +1,30 @@
+name: Playground
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  playground:
+    runs-on: "ubuntu-latest"
+    steps:
+
+      - name: Playground
+        run: |
+          lsblk
+          free
+
+      - name: Trying setting up zram-swap
+        run: |
+          git clone https://github.com/foundObjects/zram-swap.git
+          cd zram-swap && sudo ./install.sh
+
+
+      - name: Playground
+        run: |
+          lsblk
+          free
+
+

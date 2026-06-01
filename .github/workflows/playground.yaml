@@ -17,4 +17,6 @@ jobs:
           free
           sudo apt install zram-tools
           sudo systemctl restart zramswap
+          sudo systemctl status zramswap.service
+          sudo journalctl -xeu zramswap.service
           free

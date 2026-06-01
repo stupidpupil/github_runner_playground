@@ -15,16 +15,10 @@ jobs:
         run: |
           lsblk
           free
-
-      - name: Trying setting up zram-swap
-        run: |
-          git clone https://github.com/foundObjects/zram-swap.git
-          cd zram-swap && sudo ./install.sh
-
-
-      - name: Playground
-        run: |
-          lsblk
-          free
-
-
+          systool -v -m zswap
+          sudo modprobe zram
+          echo 8G | sudo tee /sys/block/zram0/disksize
+          echo zstd | sudo tee /sys/block/zram0/comp_algorithm
+          sudo mkswap /dev/zram0
+          sudo swapon --priority 100 /dev/zram0
+          

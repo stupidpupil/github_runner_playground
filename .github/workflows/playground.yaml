@@ -17,4 +17,4 @@ jobs:
           free
           swapon
           lsmod
-          sudo modprobe zram
+          mount
